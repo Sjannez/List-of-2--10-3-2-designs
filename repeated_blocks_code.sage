@@ -108,9 +108,9 @@ def decodeDirect(s,b):
 
 #case 0 from Table 1 in the article
 
-D0 = '000112312425343654656' 				#design D0 from article
-D0 = decodeDirect(D0,7) 					#convert to list of lists
-G0 = graphs.CompleteGraph(7) 				#graph G0 from article
+D0 = '000112312425343654656' 			#design D0 from article
+D0 = decodeDirect(D0,7) 			#convert to list of lists
+G0 = graphs.CompleteGraph(7) 			#graph G0 from article
 
 #find induced cycles of G0, convert to standard form and filter dupes 
 cycles = [graphs.CycleGraph(3), graphs.CycleGraph(4), graphs.CycleGraph(5), graphs.CycleGraph(7)]	
@@ -120,10 +120,10 @@ inducedC = [[minFlip(C) for C in L] for L in inducedC]
 inducedC = [filterDupes(L) for L in inducedC]
 flatList = [y for x in inducedC for y in x]
 
-T0 = twoFacts(flatList,[],-1)				#compute 2-factorizations using list of cycles
+T0 = twoFacts(flatList,[],-1)			#compute 2-factorizations using list of cycles
 trips0 = getTriples(T0,[],G0.am(),-1)		#convert to lists of blocks
-toCheck0 = tripsToG(trips0,D0)				#merge partial designs with D0 and convert to graphs
-filter0 = filterIso(toCheck0)				#remove isomorphic copies
+toCheck0 = tripsToG(trips0,D0)			#merge partial designs with D0 and convert to graphs
+filter0 = filterIso(toCheck0)			#remove isomorphic copies
 
 
 #repeat for case 1-9:
